@@ -18,4 +18,9 @@ func RegisterRoutes() {
 			handlers.CreateOrder(w, r)
 		}
 	})
+	http.HandleFunc("/order-item", func(w http.ResponseWriter, r *http.Request) {
+		if r.Method == http.MethodPost {
+			handlers.CreateItems(w, r)
+		}
+	})
 }

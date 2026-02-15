@@ -20,6 +20,7 @@ func main() {
 	db.DB.AutoMigrate(
 		&models.Order{},
 		&models.User{},
+		&models.OrderItem{},
 	)
 	routes.RegisterRoutes()
 	log.Print("database connected")

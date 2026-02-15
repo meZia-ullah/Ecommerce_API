@@ -39,7 +39,9 @@ func GetUsers(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, "user not exist", http.StatusBadRequest)
 		return
 	}
-	db.DB.Preload("Orders").First(&user, id)
+	db.DB.
+		Preload("Orders").Preload("Orders.OrderItem").
+		First(&user, id)
 	w.Header().Set("content-type", "application/json")
 	json.NewEncoder(w).Encode(user)
 
